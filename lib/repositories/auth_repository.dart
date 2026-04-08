@@ -7,24 +7,39 @@ class AuthRepository extends ChangeNotifier {
   static const String _pinKey = 'user_pin_v1';
   static const String _userNameKey = 'user_name_v1';
   static const String _biometricEnabledKey = 'biometric_enabled_v1';
+  static const String _termsAcceptedKey = 'terms_accepted_v1';
+  static const String _dailyReminderSetupCompleteKey = 'daily_reminder_setup_complete_v1';
   
   final LocalAuthentication _localAuth = LocalAuthentication();
   String? _pin;
   String? _userName;
   bool _isBiometricEnabled = false;
   bool _isAuthenticated = false;
+  bool _isTermsAccepted = false;
+  bool _isDailyReminderSetupComplete = false;
 
   String? get pin => _pin;
   String? get userName => _userName;
   bool get isBiometricEnabled => _isBiometricEnabled;
   bool get isAuthenticated => _isAuthenticated;
   bool get hasPin => _pin != null;
+  bool get termsAccepted => _isTermsAccepted;
+  bool get isDailyReminderSetupComplete => _isDailyReminderSetupComplete;
 
   Future<void> init() async {
     final prefs = await SharedPreferences.getInstance();
     _pin = prefs.getString(_pinKey);
     _userName = prefs.getString(_userNameKey);
     _isBiometricEnabled = prefs.getBool(_biometricEnabledKey) ?? false;
+
+    _isTermsAccepted = prefs.getBool(_termsAcceptedKey) ?? false;
+    // If the app already has a stored daily_reminder preference, treat the onboarding
+    // as completed for older installs where we didn't have this prompt yet.
+    if (prefs.containsKey(_dailyReminderSetupCompleteKey)) {
+      _isDailyReminderSetupComplete = prefs.getBool(_dailyReminderSetupCompleteKey) ?? false;
+    } else {
+      _isDailyReminderSetupComplete = prefs.containsKey('daily_reminder');
+    }
     notifyListeners();
   }
 
@@ -41,6 +56,20 @@ class AuthRepository extends ChangeNotifier {
     await prefs.setString(_userNameKey, name);
     _userName = name;
     _isAuthenticated = true; // User is "fully logged in" once name is set
+    notifyListeners();
+  }
+
+  Future<void> setTermsAccepted(bool accepted) async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setBool(_termsAcceptedKey, accepted);
+    _isTermsAccepted = accepted;
+    notifyListeners();
+  }
+
+  Future<void> setDailyReminderSetupComplete(bool complete) async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setBool(_dailyReminderSetupCompleteKey, complete);
+    _isDailyReminderSetupComplete = complete;
     notifyListeners();
   }
 

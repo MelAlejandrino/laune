@@ -48,14 +48,23 @@ class _SettingsScreenState extends State<SettingsScreen> {
   }
 
   Future<void> _toggleReminder(bool value) async {
-    setState(() => _dailyReminder = value);
     final prefs = await SharedPreferences.getInstance();
-    await prefs.setBool('daily_reminder', value);
     
     if (value) {
-      await NotificationService().scheduleDailyReminder(_reminderTime);
+      final scheduled = await NotificationService().scheduleDailyReminder(_reminderTime);
+      if (!scheduled) {
+        setState(() => _dailyReminder = false);
+        await prefs.setBool('daily_reminder', false);
+        _showToast('Notifications permission was not granted. Please enable notifications in system settings.');
+        return;
+      }
+
+      setState(() => _dailyReminder = true);
+      await prefs.setBool('daily_reminder', true);
     } else {
       await NotificationService().cancelAll();
+      setState(() => _dailyReminder = false);
+      await prefs.setBool('daily_reminder', false);
     }
   }
 
@@ -82,7 +91,12 @@ class _SettingsScreenState extends State<SettingsScreen> {
       await prefs.setInt('reminder_minute', picked.minute);
       
       if (_dailyReminder) {
-        await NotificationService().scheduleDailyReminder(picked);
+        final scheduled = await NotificationService().scheduleDailyReminder(picked);
+        if (!scheduled) {
+          setState(() => _dailyReminder = false);
+          await prefs.setBool('daily_reminder', false);
+          _showToast('Notifications permission was not granted. Please enable notifications in system settings.');
+        }
       }
     }
   }

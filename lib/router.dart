@@ -11,6 +11,8 @@ import 'package:stitch/screens/view_entry_screen.dart';
 import 'package:stitch/screens/support_screens.dart';
 import 'package:stitch/screens/name_setup_screen.dart';
 import 'package:stitch/screens/pin_screen.dart';
+import 'package:stitch/screens/terms_accept_screen.dart';
+import 'package:stitch/screens/onboarding_reminder_setup_screen.dart';
 import 'package:stitch/widgets/scaffold_with_nav_bar.dart';
 
 final GlobalKey<NavigatorState> _rootNavigatorKey = GlobalKey<NavigatorState>(debugLabel: 'root');
@@ -24,7 +26,8 @@ final appRouter = GoRouter(
     
     final isLoggingIn = location == '/login';
     final isSettingUpName = location == '/setup-name';
-
+    final isAcceptingTerms = location == '/terms-accept';
+    final isSettingUpReminder = location == '/setup-reminder';
     final isReset = state.uri.queryParameters['reset'] == 'true';
 
     if (!authRepo.isAuthenticated && !isLoggingIn) {
@@ -32,12 +35,25 @@ final appRouter = GoRouter(
     }
 
     if (authRepo.isAuthenticated) {
+      // Force onboarding steps in order.
       if (authRepo.userName == null && !isSettingUpName) {
         return '/setup-name';
       }
-      if ((isLoggingIn && !isReset) || (isSettingUpName && authRepo.userName != null)) {
-        return '/';
+      if (authRepo.userName != null && !authRepo.termsAccepted && !isAcceptingTerms) {
+        return '/terms-accept';
       }
+      if (authRepo.userName != null && authRepo.termsAccepted && !authRepo.isDailyReminderSetupComplete && !isSettingUpReminder) {
+        return '/setup-reminder';
+      }
+
+      // If user is already done with a step, don't let them land there.
+      if (!isLoggingIn && !isReset) {
+        if (isSettingUpName && authRepo.userName != null) return '/';
+        if (isAcceptingTerms && authRepo.termsAccepted) return '/';
+        if (isSettingUpReminder && authRepo.isDailyReminderSetupComplete) return '/';
+      }
+
+      if (isLoggingIn && !isReset) return '/';
     }
     return null;
   },
@@ -55,6 +71,18 @@ final appRouter = GoRouter(
       name: 'setup-name',
       parentNavigatorKey: _rootNavigatorKey,
       builder: (context, state) => const NameSetupScreen(),
+    ),
+    GoRoute(
+      path: '/terms-accept',
+      name: 'terms-accept',
+      parentNavigatorKey: _rootNavigatorKey,
+      builder: (context, state) => const TermsAcceptScreen(),
+    ),
+    GoRoute(
+      path: '/setup-reminder',
+      name: 'setup-reminder',
+      parentNavigatorKey: _rootNavigatorKey,
+      builder: (context, state) => const OnboardingReminderSetupScreen(),
     ),
     StatefulShellRoute.indexedStack(
       builder: (context, state, navigationShell) {

@@ -35,7 +35,7 @@ class _NameSetupScreenState extends State<NameSetupScreen> {
     await authRepo.setUserName(_nameController.text.trim());
     
     if (mounted) {
-      context.go('/');
+      context.go('/terms-accept');
     }
   }
 

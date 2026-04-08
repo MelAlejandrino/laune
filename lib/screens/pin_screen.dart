@@ -99,6 +99,10 @@ class _PinScreenState extends State<PinScreen> {
     final authRepo = MoodScope.of(context).authRepository;
     if (authRepo.userName == null) {
       context.go('/setup-name');
+    } else if (!authRepo.termsAccepted) {
+      context.go('/terms-accept');
+    } else if (!authRepo.isDailyReminderSetupComplete) {
+      context.go('/setup-reminder');
     } else {
       context.go('/');
     }
