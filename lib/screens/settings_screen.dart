@@ -257,7 +257,6 @@ class _SettingsScreenState extends State<SettingsScreen> {
                     const SizedBox(height: 24),
                     Text('LAUNE', style: Theme.of(context).textTheme.labelLarge?.copyWith(fontSize: 10, letterSpacing: 2)),
                     const SizedBox(height: 4),
-                    Text('Version 2.4.1 (Build 890)', style: Theme.of(context).textTheme.labelLarge?.copyWith(fontSize: 10, color: Theme.of(context).colorScheme.onSurfaceVariant.withOpacity(0.5))),
                   ],
                 ),
               ),
