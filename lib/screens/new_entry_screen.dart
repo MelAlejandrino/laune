@@ -187,49 +187,51 @@ class _NewEntryScreenState extends State<NewEntryScreen> {
 
   Widget _buildMoodSelector(BuildContext context) {
     final scheme = Theme.of(context).colorScheme;
-    return Wrap(
-      spacing: 10,
-      runSpacing: 10,
-      children: MoodType.values.map((mood) {
+    // A compact “segmented” grid keeps the mood picker modern and avoids
+    // horizontal sliding.
+    return GridView.builder(
+      shrinkWrap: true,
+      physics: const NeverScrollableScrollPhysics(),
+      itemCount: MoodType.values.length,
+      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+        crossAxisCount: 5,
+        crossAxisSpacing: 10,
+        mainAxisSpacing: 10,
+        childAspectRatio: 1,
+      ),
+      itemBuilder: (context, index) {
+        final mood = MoodType.values[index];
         final isSelected = _selectedMood == mood;
-        return InkWell(
-          borderRadius: BorderRadius.circular(999),
-          onTap: () => setState(() => _selectedMood = mood),
-          child: Container(
-            padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
-            decoration: BoxDecoration(
-              color: isSelected
-                  ? scheme.primaryContainer.withOpacity(0.35)
-                  : scheme.surfaceVariant.withOpacity(0.15),
-              borderRadius: BorderRadius.circular(999),
-              border: Border.all(
-                color: isSelected ? scheme.primary.withOpacity(0.6) : scheme.outline.withOpacity(0.1),
-                width: isSelected ? 2 : 1,
-              ),
-            ),
-            child: Row(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Text(
-                  mood.emoji,
-                  style: const TextStyle(fontSize: 18),
+        return Tooltip(
+          message: mood.label,
+          child: InkWell(
+            borderRadius: BorderRadius.circular(16),
+            onTap: () => setState(() => _selectedMood = mood),
+            child: Container(
+              alignment: Alignment.center,
+              decoration: BoxDecoration(
+                color: isSelected
+                    ? scheme.primary.withOpacity(0.14)
+                    : scheme.surfaceVariant.withOpacity(0.06),
+                borderRadius: BorderRadius.circular(16),
+                border: Border.all(
+                  color: isSelected
+                      ? scheme.primary.withOpacity(0.38)
+                      : scheme.outline.withOpacity(0.05),
+                  width: isSelected ? 1.0 : 1.0,
                 ),
-                if (isSelected) ...[
-                  const SizedBox(width: 8),
-                  Text(
-                    mood.label,
-                    style: TextStyle(
-                      fontSize: 12,
-                      fontWeight: FontWeight.bold,
-                      color: scheme.primary,
-                    ),
-                  ),
-                ],
-              ],
+              ),
+              child: Text(
+                mood.emoji,
+                style: TextStyle(
+                  fontSize: 20,
+                  color: isSelected ? scheme.primary : scheme.onSurfaceVariant,
+                ),
+              ),
             ),
           ),
         );
-      }).toList(),
+      },
     );
   }
 
@@ -285,9 +287,8 @@ class _NewEntryScreenState extends State<NewEntryScreen> {
     return Container(
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: scheme.surfaceVariant.withOpacity(0.1),
+        color: scheme.surfaceVariant.withOpacity(0.07),
         borderRadius: BorderRadius.circular(20),
-        border: Border.all(color: scheme.outline.withOpacity(0.1)),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -306,30 +307,31 @@ class _NewEntryScreenState extends State<NewEntryScreen> {
     return Container(
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: scheme.surfaceVariant.withOpacity(0.1),
+        color: scheme.surfaceVariant.withOpacity(0.07),
         borderRadius: BorderRadius.circular(20),
-        border: Border.all(color: scheme.outline.withOpacity(0.1)),
       ),
-      child: ExpansionTile(
-        tilePadding: const EdgeInsets.symmetric(horizontal: 8),
-        childrenPadding: const EdgeInsets.only(top: 12),
-        title: Text(
-          'More',
-          style: TextStyle(
-            fontSize: 16,
-            fontWeight: FontWeight.bold,
-            color: scheme.onSurfaceVariant,
+      child: Theme(
+        data: Theme.of(context).copyWith(dividerColor: Colors.transparent),
+        child: ExpansionTile(
+          tilePadding: const EdgeInsets.symmetric(horizontal: 8),
+          childrenPadding: const EdgeInsets.only(top: 12),
+          title: Text(
+            'More',
+            style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                  fontWeight: FontWeight.bold,
+                  color: scheme.onSurfaceVariant,
+                ),
           ),
+          trailing: const Icon(Icons.expand_more),
+          onExpansionChanged: (_) {},
+          initiallyExpanded: false,
+          children: [
+            _buildTagsSection(context),
+            const SizedBox(height: 20),
+            _buildDateTimeSelector(context),
+            const SizedBox(height: 8),
+          ],
         ),
-        trailing: const Icon(Icons.expand_more),
-        onExpansionChanged: (_) {},
-        initiallyExpanded: false,
-        children: [
-          _buildTagsSection(context),
-          const SizedBox(height: 20),
-          _buildDateTimeSelector(context),
-          const SizedBox(height: 8),
-        ],
       ),
     );
   }
@@ -348,7 +350,10 @@ class _NewEntryScreenState extends State<NewEntryScreen> {
             ),
             Text(
               '${_noteController.text.length} characters',
-              style: const TextStyle(fontSize: 12, color: AppTheme.outline),
+              style: TextStyle(
+                fontSize: 12,
+                color: scheme.onSurfaceVariant.withOpacity(0.6),
+              ),
             ),
           ],
         ),
@@ -357,9 +362,8 @@ class _NewEntryScreenState extends State<NewEntryScreen> {
           height: 220,
           padding: const EdgeInsets.all(24),
           decoration: BoxDecoration(
-            color: scheme.surfaceVariant.withOpacity(0.15),
+            color: scheme.surfaceVariant.withOpacity(0.08),
             borderRadius: BorderRadius.circular(16),
-            border: Border.all(color: scheme.outline.withOpacity(0.1)),
           ),
           child: TextField(
             controller: _noteController,
