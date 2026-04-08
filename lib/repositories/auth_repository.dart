@@ -31,7 +31,8 @@ class AuthRepository extends ChangeNotifier {
     final prefs = await SharedPreferences.getInstance();
     await prefs.setString(_pinKey, newPin);
     _pin = newPin;
-    notifyListeners(); // Removed session auto-auth as it should go to name setup/unlock
+    _isAuthenticated = true; // Authenticate session so router allows access to setup-name
+    notifyListeners();
   }
 
   Future<void> setUserName(String name) async {

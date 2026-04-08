@@ -62,7 +62,7 @@ class _PinScreenState extends State<PinScreen> {
     }
   }
 
-  void _processPin() {
+  Future<void> _processPin() async {
     final authRepo = MoodScope.of(context).authRepository;
 
     if (_mode == PinMode.set) {
@@ -73,7 +73,7 @@ class _PinScreenState extends State<PinScreen> {
       });
     } else if (_mode == PinMode.confirm) {
       if (_enteredPin == _firstPin) {
-        authRepo.setPin(_enteredPin);
+        await authRepo.setPin(_enteredPin);
         _navigateToHome();
       } else {
         setState(() {

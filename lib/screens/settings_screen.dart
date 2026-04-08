@@ -43,7 +43,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
     moodScope.themeModeNotifier.value = mode;
     
     final prefs = await SharedPreferences.getInstance();
-    await prefs.setBool('is_dark_mode', mode == ThemeMode.dark);
+    await prefs.setInt('theme_mode', mode.index);
   }
 
   Future<void> _toggleReminder(bool value) async {

@@ -22,9 +22,9 @@ void main() async {
   
   // Theme Management
   final prefs = await SharedPreferences.getInstance();
-  final isDarkMode = prefs.getBool('is_dark_mode') ?? false;
+  final themeIndex = prefs.getInt('theme_mode') ?? ThemeMode.system.index;
   final themeModeNotifier = ValueNotifier<ThemeMode>(
-    isDarkMode ? ThemeMode.dark : ThemeMode.light,
+    ThemeMode.values[themeIndex],
   );
 
   runApp(MoodLogApp(
