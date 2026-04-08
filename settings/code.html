@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Manrope:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-dim": "#3d3dcb",
+                        "surface-container": "#e5eeff",
+                        "secondary-fixed-dim": "#d1d0ff",
+                        "on-tertiary-fixed": "#004a41",
+                        "surface-dim": "#c4dcff",
+                        "inverse-primary": "#a5f2fd",
+                        "tertiary-fixed": "#65fde6",
+                        "on-primary": "#eafcff",
+                        "surface-container-lowest": "#ffffff",
+                        "inverse-surface": "#000f21",
+                        "on-error": "#fff7f6",
+                        "inverse-on-surface": "#8e9eb7",
+                        "tertiary-container": "#65fde6",
+                        "on-secondary-container": "#3b3cc9",
+                        "outline": "#5a7da9",
+                        "primary": "#096973",
+                        "on-tertiary-container": "#005e54",
+                        "secondary-container": "#e1e0ff",
+                        "on-background": "#05345c",
+                        "on-secondary-fixed": "#2622b7",
+                        "on-secondary-fixed-variant": "#4647d3",
+                        "primary-container": "#a3effa",
+                        "surface": "#f8f9ff",
+                        "on-primary-fixed-variant": "#00656f",
+                        "error": "#a83836",
+                        "surface-tint": "#096973",
+                        "surface-container-high": "#dce9ff",
+                        "on-error-container": "#6e0a12",
+                        "on-primary-fixed": "#00474e",
+                        "on-tertiary-fixed-variant": "#00695e",
+                        "primary-dim": "#005c65",
+                        "on-secondary": "#fbf7ff",
+                        "on-tertiary": "#e2fff8",
+                        "primary-fixed": "#a3effa",
+                        "error-container": "#fa746f",
+                        "tertiary": "#006b60",
+                        "secondary": "#4a4bd7",
+                        "secondary-fixed": "#e1e0ff",
+                        "on-surface-variant": "#3d618c",
+                        "tertiary-dim": "#005e54",
+                        "surface-variant": "#d2e4ff",
+                        "on-surface": "#05345c",
+                        "surface-container-highest": "#d2e4ff",
+                        "background": "#f8f9ff",
+                        "primary-fixed-dim": "#95e1eb",
+                        "tertiary-fixed-dim": "#54eed8",
+                        "surface-bright": "#f8f9ff",
+                        "error-dim": "#67040d",
+                        "surface-container-low": "#eff4ff",
+                        "on-primary-container": "#005b63",
+                        "outline-variant": "#91b4e4"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Plus Jakarta Sans"],
+                        "body": ["Manrope"],
+                        "label": ["Manrope"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body { font-family: 'Manrope', sans-serif; }
+        .plus-jakarta { font-family: 'Plus Jakarta Sans', sans-serif; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface min-h-screen pb-32">
+<!-- Top AppBar -->
+<header class="w-full top-0 sticky bg-[#f8f9ff] dark:bg-slate-950 flex justify-between items-center px-6 py-4 w-full no-line transition-colors duration-300 z-40">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full overflow-hidden border-2 border-primary-container">
+<img alt="Profile" class="w-full h-full object-cover" data-alt="close-up portrait of a woman with a serene expression and soft morning light hitting her face" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBSMIScsWlgkr9lWkrQdJxLkcpmURGEJDdyO1oPxrmiPcq6FvLuiT_Bz8AngJv-bragbBKfTQ-wm_9unQDhIMQjkB99z_6a_Eb_PT0xpEEEJIzxjK4Lqa8rKCOMyjDZXUDlHtuKm7XTpImZN5AxvWugFVxCEtUY6TMQWMqZt4l9Ve2mjOfhQGOuyG-KbKTp7vv9qf3KGdWx9cekBppRwKzWxR89_uyJQPIx4b6N-1SRVnHy-XX83u7XTmB9HsTiTE-ZjOC0aeWWPDE"/>
+</div>
+<h1 class="font-['Plus_Jakarta_Sans'] font-bold text-[#096973] dark:text-teal-400 text-xl">Mindful Canvas</h1>
+</div>
+<button class="text-[#096973] dark:text-teal-400 active:scale-95 duration-200">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+</button>
+</header>
+<main class="px-6 pt-4 space-y-8">
+<!-- User Profile Header -->
+<section class="flex flex-col items-start gap-1">
+<h2 class="text-3xl font-bold plus-jakarta text-on-surface tracking-tight">Elena Vance</h2>
+<p class="text-on-surface-variant font-medium">Premium Member since 2023</p>
+</section>
+<!-- App Settings Section -->
+<section class="space-y-4">
+<h3 class="text-sm font-bold uppercase tracking-widest text-outline ml-1">App Settings</h3>
+<div class="bg-surface-container-low rounded-lg p-2 space-y-1">
+<!-- Daily Reminder -->
+<div class="flex items-center justify-between p-4 bg-surface-container-lowest rounded-DEFAULT">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-primary-container flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">notifications</span>
+</div>
+<div>
+<p class="font-bold text-on-surface">Daily Reminder</p>
+<p class="text-xs text-on-surface-variant">08:30 PM • Every Day</p>
+</div>
+</div>
+<div class="w-12 h-6 bg-primary rounded-full relative">
+<div class="absolute right-1 top-1 w-4 h-4 bg-on-primary rounded-full"></div>
+</div>
+</div>
+<!-- PIN Lock -->
+<div class="flex items-center justify-between p-4 bg-surface-container-lowest rounded-DEFAULT">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-secondary-container flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined">fingerprint</span>
+</div>
+<div>
+<p class="font-bold text-on-surface">Biometric Lock</p>
+<p class="text-xs text-on-surface-variant">FaceID or TouchID</p>
+</div>
+</div>
+<div class="w-12 h-6 bg-surface-variant rounded-full relative">
+<div class="absolute left-1 top-1 w-4 h-4 bg-on-surface-variant rounded-full"></div>
+</div>
+</div>
+<!-- Theme Selection -->
+<div class="p-4 bg-surface-container-lowest rounded-DEFAULT space-y-4">
+<div class="flex items-center gap-4 mb-2">
+<div class="w-10 h-10 rounded-full bg-tertiary-container flex items-center justify-center text-tertiary">
+<span class="material-symbols-outlined">palette</span>
+</div>
+<p class="font-bold text-on-surface">App Theme</p>
+</div>
+<div class="grid grid-cols-3 gap-2">
+<button class="py-3 px-2 rounded-xl bg-surface-container-highest border-2 border-primary text-primary text-sm font-bold">System</button>
+<button class="py-3 px-2 rounded-xl bg-surface-container-low text-on-surface-variant text-sm font-medium">Light</button>
+<button class="py-3 px-2 rounded-xl bg-surface-container-low text-on-surface-variant text-sm font-medium">Dark</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Data Management Section -->
+<section class="space-y-4">
+<h3 class="text-sm font-bold uppercase tracking-widest text-outline ml-1">Data Management</h3>
+<div class="bg-surface-container-low rounded-lg p-2 space-y-1">
+<!-- Export -->
+<div class="p-4 bg-surface-container-lowest rounded-DEFAULT space-y-3">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-primary-container/30 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">ios_share</span>
+</div>
+<p class="font-bold text-on-surface">Export My Journey</p>
+</div>
+<div class="flex gap-3">
+<button class="flex-1 py-2 bg-surface-container text-on-primary-container rounded-full text-xs font-bold border border-outline-variant/20">CSV FORMAT</button>
+<button class="flex-1 py-2 bg-surface-container text-on-primary-container rounded-full text-xs font-bold border border-outline-variant/20">JSON FORMAT</button>
+</div>
+</div>
+<!-- Cloud Sync -->
+<div class="flex items-center justify-between p-4 bg-surface-container-lowest rounded-DEFAULT">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-primary-container flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">cloud_sync</span>
+</div>
+<div>
+<p class="font-bold text-on-surface">Cloud Sync</p>
+<p class="text-xs text-on-surface-variant">Last synced 2m ago</p>
+</div>
+</div>
+<div class="w-12 h-6 bg-primary rounded-full relative">
+<div class="absolute right-1 top-1 w-4 h-4 bg-on-primary rounded-full"></div>
+</div>
+</div>
+</div>
+</section>
+<!-- Support & Privacy -->
+<section class="space-y-3">
+<h3 class="text-sm font-bold uppercase tracking-widest text-outline ml-1">Support &amp; Privacy</h3>
+<div class="space-y-1">
+<a class="flex items-center justify-between p-4 bg-surface-container-low rounded-xl hover:bg-surface-container-high transition-colors" href="#">
+<span class="font-semibold text-on-surface">Privacy Policy</span>
+<span class="material-symbols-outlined text-outline">chevron_right</span>
+</a>
+<a class="flex items-center justify-between p-4 bg-surface-container-low rounded-xl hover:bg-surface-container-high transition-colors" href="#">
+<span class="font-semibold text-on-surface">Help Center</span>
+<span class="material-symbols-outlined text-outline">chevron_right</span>
+</a>
+<a class="flex items-center justify-between p-4 bg-surface-container-low rounded-xl hover:bg-surface-container-high transition-colors" href="#">
+<span class="font-semibold text-on-surface">Terms of Service</span>
+<span class="material-symbols-outlined text-outline">chevron_right</span>
+</a>
+</div>
+</section>
+<!-- Footer Actions -->
+<section class="pt-8 pb-12 flex flex-col items-center gap-4">
+<button class="w-full max-w-xs py-4 rounded-full bg-error-container/20 text-error font-bold tracking-wide active:scale-95 transition-transform">
+                Sign Out
+            </button>
+<div class="text-center">
+<p class="text-outline text-xs font-bold uppercase tracking-widest">Mindful Canvas</p>
+<p class="text-outline-variant text-xs mt-1">Version 2.4.1 (Build 890)</p>
+</div>
+</section>
+</main>
+<!-- Bottom Navigation -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-6 pt-3 bg-[#f8f9ff]/80 dark:bg-slate-950/80 backdrop-blur-xl shadow-[0px_-12px_32px_rgba(5,52,92,0.06)] rounded-t-[32px]">
+<button class="flex flex-col items-center justify-center text-[#3d618c] dark:text-slate-400 px-5 py-2 hover:opacity-80 active:scale-90 transition-transform duration-200">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="font-['Manrope'] text-[11px] font-medium tracking-wide">Home</span>
+</button>
+<button class="flex flex-col items-center justify-center text-[#3d618c] dark:text-slate-400 px-5 py-2 hover:opacity-80 active:scale-90 transition-transform duration-200">
+<span class="material-symbols-outlined" data-icon="history">history</span>
+<span class="font-['Manrope'] text-[11px] font-medium tracking-wide">History</span>
+</button>
+<button class="flex flex-col items-center justify-center text-[#3d618c] dark:text-slate-400 px-5 py-2 hover:opacity-80 active:scale-90 transition-transform duration-200">
+<span class="material-symbols-outlined" data-icon="calendar_today">calendar_today</span>
+<span class="font-['Manrope'] text-[11px] font-medium tracking-wide">Calendar</span>
+</button>
+<button class="flex flex-col items-center justify-center text-[#3d618c] dark:text-slate-400 px-5 py-2 hover:opacity-80 active:scale-90 transition-transform duration-200">
+<span class="material-symbols-outlined" data-icon="insights">insights</span>
+<span class="font-['Manrope'] text-[11px] font-medium tracking-wide">Insights</span>
+</button>
+<button class="flex flex-col items-center justify-center bg-[#d2e4ff] dark:bg-teal-900/30 text-[#096973] dark:text-teal-300 rounded-[24px] px-5 py-2 transition-all hover:opacity-80 active:scale-90 transition-transform duration-200">
+<span class="material-symbols-outlined" data-icon="settings" style="font-variation-settings: 'FILL' 1;">settings</span>
+<span class="font-['Manrope'] text-[11px] font-medium tracking-wide">Settings</span>
+</button>
+</nav>
+</body></html>

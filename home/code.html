@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Mindful Canvas - Home</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Manrope:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-dim": "#3d3dcb",
+                        "surface-container": "#e5eeff",
+                        "secondary-fixed-dim": "#d1d0ff",
+                        "on-tertiary-fixed": "#004a41",
+                        "surface-dim": "#c4dcff",
+                        "inverse-primary": "#a5f2fd",
+                        "tertiary-fixed": "#65fde6",
+                        "on-primary": "#eafcff",
+                        "surface-container-lowest": "#ffffff",
+                        "inverse-surface": "#000f21",
+                        "on-error": "#fff7f6",
+                        "inverse-on-surface": "#8e9eb7",
+                        "tertiary-container": "#65fde6",
+                        "on-secondary-container": "#3b3cc9",
+                        "outline": "#5a7da9",
+                        "primary": "#096973",
+                        "on-tertiary-container": "#005e54",
+                        "secondary-container": "#e1e0ff",
+                        "on-background": "#05345c",
+                        "on-secondary-fixed": "#2622b7",
+                        "on-secondary-fixed-variant": "#4647d3",
+                        "primary-container": "#a3effa",
+                        "surface": "#f8f9ff",
+                        "on-primary-fixed-variant": "#00656f",
+                        "error": "#a83836",
+                        "surface-tint": "#096973",
+                        "surface-container-high": "#dce9ff",
+                        "on-error-container": "#6e0a12",
+                        "on-primary-fixed": "#00474e",
+                        "on-tertiary-fixed-variant": "#00695e",
+                        "primary-dim": "#005c65",
+                        "on-secondary": "#fbf7ff",
+                        "on-tertiary": "#e2fff8",
+                        "primary-fixed": "#a3effa",
+                        "error-container": "#fa746f",
+                        "tertiary": "#006b60",
+                        "secondary": "#4a4bd7",
+                        "secondary-fixed": "#e1e0ff",
+                        "on-surface-variant": "#3d618c",
+                        "tertiary-dim": "#005e54",
+                        "surface-variant": "#d2e4ff",
+                        "on-surface": "#05345c",
+                        "surface-container-highest": "#d2e4ff",
+                        "background": "#f8f9ff",
+                        "primary-fixed-dim": "#95e1eb",
+                        "tertiary-fixed-dim": "#54eed8",
+                        "surface-bright": "#f8f9ff",
+                        "error-dim": "#67040d",
+                        "surface-container-low": "#eff4ff",
+                        "on-primary-container": "#005b63",
+                        "outline-variant": "#91b4e4"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Plus Jakarta Sans"],
+                        "body": ["Manrope"],
+                        "label": ["Manrope"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-background text-on-surface font-body selection:bg-primary-container">
+<!-- TopAppBar -->
+<header class="w-full top-0 sticky z-40 bg-[#f8f9ff] dark:bg-slate-950 no-line transition-colors duration-300 flex justify-between items-center px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full overflow-hidden bg-surface-container-highest">
+<img alt="User Profile" class="w-full h-full object-cover" data-alt="close-up portrait of a friendly man with a slight smile in soft studio lighting against a neutral blue background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCiLAW4GI89OhF2rT6FTJyqItA39p6Fhig4HryD6sNEtD8YDmrVF4aJSjmhpdU0ykrseUOPKJuGdakTTXro7qVQqwGoPOQ1OiJAydYgzsmgNBJVkf8biQARSHh3PXavQ9v7rYVIUiNutK2tMZGMiqsqu1M8PQGNFuJoDJGluiMjZ3AGRPBg8z61dPfLHR4KLFVuy4PLLCwjfvIpBYyRjXokNxaxp0ha33CKESYC7HDpJKSI6NmovWTFeGDxCK_RYyb2-GWAnQJz7Ns"/>
+</div>
+<h1 class="font-['Plus_Jakarta_Sans'] font-bold text-[#096973] dark:text-teal-400 text-xl">Mindful Canvas</h1>
+</div>
+<button class="w-10 h-10 flex items-center justify-center rounded-full text-[#3d618c] dark:text-slate-400 hover:bg-[#eff4ff] dark:hover:bg-slate-900 transition-all active:scale-95 duration-200">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+</button>
+</header>
+<main class="px-6 pt-4 pb-32 max-w-md mx-auto">
+<!-- Hero Greeting -->
+<section class="mb-8">
+<p class="text-on-surface-variant font-medium tracking-wide mb-1">Thursday, Oct 24</p>
+<h2 class="font-headline font-extrabold text-3xl tracking-tight text-on-surface">Good Morning, Alex!</h2>
+</section>
+<!-- Main Interaction Card (Prompt & FAB) -->
+<section class="relative">
+<div class="bg-surface-container-highest rounded-xl p-8 relative min-h-[220px] flex flex-col items-center justify-center text-center">
+<!-- Abstract Atmospheric Background Wash -->
+<div class="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent pointer-events-none"></div>
+<h3 class="font-headline text-2xl font-bold text-on-surface relative z-10 mb-2">How are you feeling today?</h3>
+<p class="text-on-surface-variant text-sm max-w-[200px] relative z-10">Take a moment to check in with yourself.</p>
+<!-- Prompt FAB -->
+<button class="absolute -bottom-6 left-1/2 -translate-x-1/2 bg-primary text-on-primary flex items-center gap-3 px-8 py-4 rounded-full shadow-[0px_12px_32px_rgba(5,52,92,0.15)] hover:opacity-90 transition-all active:scale-95 group">
+<span class="material-symbols-outlined font-variation-settings: 'FILL' 1" data-icon="add" style="font-variation-settings: 'FILL' 1;">add</span>
+<span class="font-bold tracking-wide">Quick Log</span>
+</button>
+</div>
+</section>
+<!-- Stats Bento Grid -->
+<section class="grid grid-cols-2 gap-4 mb-8">
+<!-- Current Streak -->
+<div class="bg-surface-container-low p-6 rounded-lg flex flex-col justify-between aspect-square">
+<div>
+<span class="material-symbols-outlined text-secondary mb-3" data-icon="local_fire_department" style="font-variation-settings: 'FILL' 1;">local_fire_department</span>
+<p class="text-on-surface-variant text-sm font-semibold uppercase tracking-widest">Streak</p>
+</div>
+<h4 class="font-headline text-2xl font-extrabold text-on-surface">7 Days <span class="inline-block transform scale-110">🔥</span></h4>
+</div>
+<!-- Weekly Average -->
+<div class="bg-surface-container-low p-6 rounded-lg flex flex-col justify-between aspect-square">
+<div>
+<span class="material-symbols-outlined text-primary mb-3" data-icon="insights">insights</span>
+<p class="text-on-surface-variant text-sm font-semibold uppercase tracking-widest text-[10px]">Weekly Avg</p>
+</div>
+<div class="flex items-end gap-2">
+<h4 class="font-headline text-2xl font-extrabold text-on-surface">Good</h4>
+<span class="text-2xl">😊</span>
+</div>
+</div>
+</section>
+<!-- Top Tags Section -->
+<section class="mb-8">
+<div class="flex items-center justify-between mb-4 px-1">
+<h3 class="font-headline font-bold text-lg text-on-surface">Top Tags</h3>
+<button class="text-primary text-sm font-semibold">See All</button>
+</div>
+<div class="flex gap-3 overflow-x-auto hide-scrollbar pb-2 -mx-1 px-1">
+<button class="flex-shrink-0 bg-surface-container-highest text-on-surface-variant px-5 py-2.5 rounded-full font-medium border border-outline-variant/10 hover:bg-surface-container transition-colors">
+                    #work
+                </button>
+<button class="flex-shrink-0 bg-surface-container-highest text-on-surface-variant px-5 py-2.5 rounded-full font-medium border border-outline-variant/10 hover:bg-surface-container transition-colors">
+                    #sleep
+                </button>
+<button class="flex-shrink-0 bg-surface-container-highest text-on-surface-variant px-5 py-2.5 rounded-full font-medium border border-outline-variant/10 hover:bg-surface-container transition-colors">
+                    #exercise
+                </button>
+<button class="flex-shrink-0 bg-surface-container-highest text-on-surface-variant px-5 py-2.5 rounded-full font-medium border border-outline-variant/10 hover:bg-surface-container transition-colors">
+                    #meditation
+                </button>
+<button class="flex-shrink-0 bg-surface-container-highest text-on-surface-variant px-5 py-2.5 rounded-full font-medium border border-outline-variant/10 hover:bg-surface-container transition-colors">
+                    #creative
+                </button>
+</div>
+</section>
+<!-- Quote/Inspiration Card -->
+<section>
+<div class="rounded-xl overflow-hidden relative h-40 group">
+<img alt="Inspiration" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="peaceful landscape of a calm lake at dawn with soft mist and pastel blue and pink sky" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC6_gKqdQxZq4uATczK-pa5E3jhfr6vB4O1Ef_b-QNGjr3b81MHT-RzCRP0Qi_CU0SdUQb7lDf8fu190vwFRw8aVvHCP-hViYw5hk6w3NFPOpDIwAtAz67bKItbusRDhZxPPfKx6_fwedZxHeRtW5oakfM-Q1nXV0qR8aqIFauI4c0rHkDcsfAklJty_zF6tuJB5CbhU5GzMS6jwX2vR_yaaS0itbiGE0DftDvgSnsSSMsTiW3Nksbepr-1mAzlNA0WfpDK_knDR7Q"/>
+<div class="absolute inset-0 bg-on-surface/40 backdrop-blur-[2px] flex items-center justify-center p-8 text-center">
+<p class="text-white italic font-medium leading-relaxed">"The present moment is filled with joy and happiness. If you are attentive, you will see it."</p>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 bg-[#f8f9ff]/80 dark:bg-slate-950/80 backdrop-blur-xl shadow-[0px_-12px_32px_rgba(5,52,92,0.06)] rounded-t-[32px] flex justify-around items-center px-4 pb-8 pt-3">
+<!-- Home (Active) -->
+<a class="flex flex-col items-center justify-center bg-[#d2e4ff] dark:bg-teal-900/30 text-[#096973] dark:text-teal-300 rounded-[24px] px-5 py-2 transition-all active:scale-90 duration-200 group" href="#">
+<span class="material-symbols-outlined text-2xl font-variation-settings: 'FILL' 1" data-icon="home" style="font-variation-settings: 'FILL' 1;">home</span>
+<span class="font-['Manrope'] text-[11px] font-medium tracking-wide mt-1">Home</span>
+</a>
+<!-- History -->
+<a class="flex flex-col items-center justify-center text-[#3d618c] dark:text-slate-400 px-5 py-2 hover:opacity-80 active:scale-90 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined text-2xl" data-icon="history">history</span>
+<span class="font-['Manrope'] text-[11px] font-medium tracking-wide mt-1">History</span>
+</a>
+<!-- Calendar -->
+<a class="flex flex-col items-center justify-center text-[#3d618c] dark:text-slate-400 px-5 py-2 hover:opacity-80 active:scale-90 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined text-2xl" data-icon="calendar_today">calendar_today</span>
+<span class="font-['Manrope'] text-[11px] font-medium tracking-wide mt-1">Calendar</span>
+</a>
+<!-- Insights -->
+<a class="flex flex-col items-center justify-center text-[#3d618c] dark:text-slate-400 px-5 py-2 hover:opacity-80 active:scale-90 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined text-2xl" data-icon="insights">insights</span>
+<span class="font-['Manrope'] text-[11px] font-medium tracking-wide mt-1">Insights</span>
+</a>
+<!-- Settings -->
+<a class="flex flex-col items-center justify-center text-[#3d618c] dark:text-slate-400 px-5 py-2 hover:opacity-80 active:scale-90 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined text-2xl" data-icon="settings">settings</span>
+<span class="font-['Manrope'] text-[11px] font-medium tracking-wide mt-1">Settings</span>
+</a>
+</nav>
+<!-- Bottom separation gradient for depth as per design system -->
+<div class="fixed bottom-0 left-0 w-full h-24 bg-gradient-to-t from-background to-transparent pointer-events-none -z-10"></div>
+</body></html>

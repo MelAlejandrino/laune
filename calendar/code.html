@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>MoodLog Calendar - Mindful Canvas</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Manrope:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-dim": "#3d3dcb",
+                        "surface-container": "#e5eeff",
+                        "secondary-fixed-dim": "#d1d0ff",
+                        "on-tertiary-fixed": "#004a41",
+                        "surface-dim": "#c4dcff",
+                        "inverse-primary": "#a5f2fd",
+                        "tertiary-fixed": "#65fde6",
+                        "on-primary": "#eafcff",
+                        "surface-container-lowest": "#ffffff",
+                        "inverse-surface": "#000f21",
+                        "on-error": "#fff7f6",
+                        "inverse-on-surface": "#8e9eb7",
+                        "tertiary-container": "#65fde6",
+                        "on-secondary-container": "#3b3cc9",
+                        "outline": "#5a7da9",
+                        "primary": "#096973",
+                        "on-tertiary-container": "#005e54",
+                        "secondary-container": "#e1e0ff",
+                        "on-background": "#05345c",
+                        "on-secondary-fixed": "#2622b7",
+                        "on-secondary-fixed-variant": "#4647d3",
+                        "primary-container": "#a3effa",
+                        "surface": "#f8f9ff",
+                        "on-primary-fixed-variant": "#00656f",
+                        "error": "#a83836",
+                        "surface-tint": "#096973",
+                        "surface-container-high": "#dce9ff",
+                        "on-error-container": "#6e0a12",
+                        "on-primary-fixed": "#00474e",
+                        "on-tertiary-fixed-variant": "#00695e",
+                        "primary-dim": "#005c65",
+                        "on-secondary": "#fbf7ff",
+                        "on-tertiary": "#e2fff8",
+                        "primary-fixed": "#a3effa",
+                        "error-container": "#fa746f",
+                        "tertiary": "#006b60",
+                        "secondary": "#4a4bd7",
+                        "secondary-fixed": "#e1e0ff",
+                        "on-surface-variant": "#3d618c",
+                        "tertiary-dim": "#005e54",
+                        "surface-variant": "#d2e4ff",
+                        "on-surface": "#05345c",
+                        "surface-container-highest": "#d2e4ff",
+                        "background": "#f8f9ff",
+                        "primary-fixed-dim": "#95e1eb",
+                        "tertiary-fixed-dim": "#54eed8",
+                        "surface-bright": "#f8f9ff",
+                        "error-dim": "#67040d",
+                        "surface-container-low": "#eff4ff",
+                        "on-primary-container": "#005b63",
+                        "outline-variant": "#91b4e4"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Plus Jakarta Sans"],
+                        "body": ["Manrope"],
+                        "label": ["Manrope"]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            font-family: 'Manrope', sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .no-line { border: none !important; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface min-h-screen pb-32">
+<!-- TopAppBar -->
+<header class="w-full top-0 sticky bg-[#f8f9ff] dark:bg-slate-950 no-line transition-colors duration-300 z-50">
+<div class="flex justify-between items-center px-6 py-4 w-full">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full overflow-hidden bg-surface-container-highest">
+<img alt="User profile" class="w-full h-full object-cover" data-alt="Close-up portrait of a serene woman with natural lighting in a peaceful studio setting, soft focus background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBXWWuQWDzNcxcxI8NiQYpkownImvaFILO6U-dEf65IY-n51keAeEngsY8hocc1EbZl9icC56Akc23sLlq1uWV8tndER6DewEQ4QVyFRMN9hnnRUnHI1DB7eNDuYr3ka4JHadR6PHf3REBewjtNl5HiETkx63wlZWS4gBLkMdz9n6utewlToEDndncY4YlEL8wL9cY_a5-wTZ3BvRYVX4_NwBVe5smP_MwZ_1qXmco_ciBcNwyS3RHQXOOKRoGJ3AUSgOVPae9IiC4"/>
+</div>
+<span class="font-['Plus_Jakarta_Sans'] font-bold text-[#096973] dark:text-teal-400 text-xl">Mindful Canvas</span>
+</div>
+<button class="w-10 h-10 flex items-center justify-center rounded-full text-[#096973] dark:text-teal-400 hover:bg-[#eff4ff] dark:hover:bg-slate-900 transition-all active:scale-95 duration-200">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+</button>
+</div>
+</header>
+<main class="px-6 pt-4 space-y-8">
+<!-- Calendar Header Controls -->
+<section class="flex items-center justify-between">
+<div class="space-y-1">
+<h1 class="font-headline font-extrabold text-3xl tracking-tight text-on-surface">May 2024</h1>
+<p class="text-on-surface-variant font-medium">Emotional Landscape</p>
+</div>
+<div class="flex gap-2">
+<button class="w-12 h-12 flex items-center justify-center bg-surface-container-low rounded-full text-on-surface-variant hover:bg-surface-container-high active:scale-95 transition-all">
+<span class="material-symbols-outlined">chevron_left</span>
+</button>
+<button class="w-12 h-12 flex items-center justify-center bg-surface-container-low rounded-full text-on-surface-variant hover:bg-surface-container-high active:scale-95 transition-all">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+</section>
+<!-- Heatmap Calendar Grid -->
+<section class="bg-surface-container-lowest rounded-xl p-6 shadow-[0px_12px_32px_rgba(5,52,92,0.06)]">
+<div class="grid grid-cols-7 gap-2 mb-4">
+<div class="text-center text-[10px] font-bold uppercase tracking-widest text-outline">Mon</div>
+<div class="text-center text-[10px] font-bold uppercase tracking-widest text-outline">Tue</div>
+<div class="text-center text-[10px] font-bold uppercase tracking-widest text-outline">Wed</div>
+<div class="text-center text-[10px] font-bold uppercase tracking-widest text-outline">Thu</div>
+<div class="text-center text-[10px] font-bold uppercase tracking-widest text-outline">Fri</div>
+<div class="text-center text-[10px] font-bold uppercase tracking-widest text-outline">Sat</div>
+<div class="text-center text-[10px] font-bold uppercase tracking-widest text-outline">Sun</div>
+</div>
+<!-- Calendar Days (Simulated May 2024 starting Wed) -->
+<div class="grid grid-cols-7 gap-3">
+<!-- Empty cells for prev month -->
+<div class="aspect-square"></div>
+<div class="aspect-square"></div>
+<!-- Day Cells with Heatmap logic -->
+<!-- 1-3 Redish, 4-6 Amber/Yellow, 7-10 Green/Teal, Gray no data -->
+<div class="aspect-square bg-primary/20 rounded-lg flex items-center justify-center font-bold text-primary transition-all active:scale-90 border-2 border-primary ring-offset-2 ring-2 ring-primary/10">1</div>
+<div class="aspect-square bg-tertiary-fixed-dim rounded-lg flex items-center justify-center font-medium text-on-tertiary-container">2</div>
+<div class="aspect-square bg-tertiary-fixed-dim rounded-lg flex items-center justify-center font-medium text-on-tertiary-container">3</div>
+<div class="aspect-square bg-error-container/40 rounded-lg flex items-center justify-center font-medium text-error">4</div>
+<div class="aspect-square bg-surface-container rounded-lg flex items-center justify-center font-medium text-outline">5</div>
+<div class="aspect-square bg-tertiary-fixed-dim rounded-lg flex items-center justify-center font-medium text-on-tertiary-container">6</div>
+<div class="aspect-square bg-amber-100 rounded-lg flex items-center justify-center font-medium text-amber-700">7</div>
+<div class="aspect-square bg-amber-100 rounded-lg flex items-center justify-center font-medium text-amber-700">8</div>
+<div class="aspect-square bg-tertiary-fixed-dim rounded-lg flex items-center justify-center font-medium text-on-tertiary-container">9</div>
+<div class="aspect-square bg-tertiary-fixed-dim rounded-lg flex items-center justify-center font-medium text-on-tertiary-container">10</div>
+<div class="aspect-square bg-error-container/40 rounded-lg flex items-center justify-center font-medium text-error">11</div>
+<div class="aspect-square bg-surface-container rounded-lg flex items-center justify-center font-medium text-outline">12</div>
+<div class="aspect-square bg-tertiary-fixed rounded-lg flex items-center justify-center font-medium text-on-tertiary-container">13</div>
+<div class="aspect-square bg-tertiary-fixed-dim rounded-lg flex items-center justify-center font-medium text-on-tertiary-container">14</div>
+<div class="aspect-square bg-tertiary-fixed rounded-lg flex items-center justify-center font-medium text-on-tertiary-container">15</div>
+<div class="aspect-square bg-tertiary-fixed rounded-lg flex items-center justify-center font-medium text-on-tertiary-container">16</div>
+<div class="aspect-square bg-amber-100 rounded-lg flex items-center justify-center font-medium text-amber-700">17</div>
+<div class="aspect-square bg-surface-container rounded-lg flex items-center justify-center font-medium text-outline">18</div>
+<div class="aspect-square bg-surface-container rounded-lg flex items-center justify-center font-medium text-outline">19</div>
+<div class="aspect-square bg-tertiary-fixed rounded-lg flex items-center justify-center font-medium text-on-tertiary-container">20</div>
+<div class="aspect-square bg-amber-100 rounded-lg flex items-center justify-center font-medium text-amber-700">21</div>
+<div class="aspect-square bg-error-container/40 rounded-lg flex items-center justify-center font-medium text-error">22</div>
+<div class="aspect-square bg-tertiary-fixed-dim rounded-lg flex items-center justify-center font-medium text-on-tertiary-container">23</div>
+<div class="aspect-square bg-tertiary-fixed-dim rounded-lg flex items-center justify-center font-medium text-on-tertiary-container">24</div>
+<div class="aspect-square bg-surface-container rounded-lg flex items-center justify-center font-medium text-outline">25</div>
+<div class="aspect-square bg-surface-container rounded-lg flex items-center justify-center font-medium text-outline">26</div>
+<div class="aspect-square bg-tertiary-fixed rounded-lg flex items-center justify-center font-medium text-on-tertiary-container">27</div>
+<div class="aspect-square bg-tertiary-fixed rounded-lg flex items-center justify-center font-medium text-on-tertiary-container">28</div>
+<div class="aspect-square bg-tertiary-fixed rounded-lg flex items-center justify-center font-medium text-on-tertiary-container">29</div>
+<div class="aspect-square bg-amber-100 rounded-lg flex items-center justify-center font-medium text-amber-700">30</div>
+<div class="aspect-square bg-tertiary-fixed-dim rounded-lg flex items-center justify-center font-medium text-on-tertiary-container">31</div>
+</div>
+<!-- Legend -->
+<div class="mt-8 flex flex-wrap justify-center gap-4 py-2 border-t border-surface-container">
+<div class="flex items-center gap-2">
+<div class="w-3 h-3 rounded-full bg-surface-container"></div>
+<span class="text-[10px] font-bold text-outline uppercase tracking-wider">No Data</span>
+</div>
+<div class="flex items-center gap-2">
+<div class="w-3 h-3 rounded-full bg-error-container"></div>
+<span class="text-[10px] font-bold text-outline uppercase tracking-wider">Low (1-3)</span>
+</div>
+<div class="flex items-center gap-2">
+<div class="w-3 h-3 rounded-full bg-amber-400"></div>
+<span class="text-[10px] font-bold text-outline uppercase tracking-wider">Mid (4-6)</span>
+</div>
+<div class="flex items-center gap-2">
+<div class="w-3 h-3 rounded-full bg-tertiary"></div>
+<span class="text-[10px] font-bold text-outline uppercase tracking-wider">High (7-10)</span>
+</div>
+</div>
+</section>
+<!-- Daily Summary Section (Asymmetric Editorial Style) -->
+<section class="space-y-4">
+<div class="flex items-baseline justify-between">
+<h2 class="font-headline font-bold text-2xl text-on-surface">May 1st</h2>
+<span class="text-sm font-medium text-primary">3 entries today</span>
+</div>
+<div class="grid grid-cols-1 gap-4">
+<!-- Bento Style Insight Card -->
+<div class="bg-surface-container-highest rounded-lg p-6 flex flex-col justify-between min-h-[160px] relative overflow-hidden">
+<div class="relative z-10 space-y-2">
+<span class="px-3 py-1 bg-primary/10 text-primary text-[10px] font-bold uppercase rounded-full">Morning Reflection</span>
+<h3 class="font-headline font-semibold text-xl text-on-primary-container">"Peaceful start with meditation and a clear sky."</h3>
+<div class="flex items-center gap-2 text-on-surface-variant text-sm font-medium">
+<span class="material-symbols-outlined text-sm">schedule</span>
+<span>08:15 AM</span>
+</div>
+</div>
+<div class="absolute right-0 bottom-0 opacity-10 translate-x-1/4 translate-y-1/4">
+<span class="material-symbols-outlined text-9xl">wb_sunny</span>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div class="bg-surface-container-low rounded-lg p-5 space-y-4">
+<div class="w-10 h-10 rounded-full bg-tertiary/20 flex items-center justify-center text-tertiary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">sentiment_satisfied</span>
+</div>
+<div>
+<p class="text-[10px] font-bold uppercase text-outline">Avg Mood</p>
+<p class="font-headline font-bold text-2xl text-on-surface">8.4</p>
+</div>
+</div>
+<div class="bg-surface-container-low rounded-lg p-5 space-y-4">
+<div class="w-10 h-10 rounded-full bg-secondary/20 flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">potted_plant</span>
+</div>
+<div>
+<p class="text-[10px] font-bold uppercase text-outline">Top Activity</p>
+<p class="font-headline font-bold text-lg text-on-surface leading-tight">Walking</p>
+</div>
+</div>
+</div>
+<div class="bg-surface-container-low rounded-lg p-6 flex items-center justify-between">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full overflow-hidden border-2 border-surface">
+<img alt="Yoga session" class="w-full h-full object-cover" data-alt="Person practicing yoga in a bright airy studio with soft shadows and minimal wooden decor" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAVTqwZoK7F4dPdkJd87vZwLANQNQQkFIjbhCbmXNFVmEZyB23_Vc8nES54Aw3HFeAaIDizgFG8O1wMdIsoLGyBJfXjZvQSR_GvDs2Y_HKfWjsvFgI1SsmD_KoxgoCBSu170zRbSI3F72n8UNzS_t1SiW1w03Wc9fevfrK_3gZabtfdnlpLGCye6ju6759jMT6k5awTiueJ1n9V40eordVOwVJ9Y7IoCK-EE3YRmEExnRSNATKtk8ezp4t8ic2HVKrLK9D7AEQYNso"/>
+</div>
+<div>
+<p class="text-xs font-bold text-outline uppercase">Logged with</p>
+<p class="font-semibold text-on-surface">Gratitude Journaling</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline">arrow_forward_ios</span>
+</div>
+</div>
+</section>
+</main>
+<!-- Floating Action Button -->
+<button class="fixed bottom-28 right-6 w-16 h-16 bg-primary text-on-primary rounded-full shadow-2xl flex items-center justify-center hover:scale-110 active:scale-95 transition-all duration-300 z-[60]">
+<span class="material-symbols-outlined text-3xl" style="font-variation-settings: 'FILL' 0, 'wght' 600;">add</span>
+</button>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-6 pt-3 bg-[#f8f9ff]/80 dark:bg-slate-950/80 backdrop-blur-xl shadow-[0px_-12px_32px_rgba(5,52,92,0.06)] rounded-t-[32px]">
+<div class="bg-gradient-to-t from-[#f8f9ff] to-transparent absolute inset-0 -z-10 rounded-t-[32px]"></div>
+<button class="flex flex-col items-center justify-center text-[#3d618c] dark:text-slate-400 px-5 py-2 hover:opacity-80 active:scale-90 transition-transform duration-200">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="font-['Manrope'] text-[11px] font-medium tracking-wide">Home</span>
+</button>
+<button class="flex flex-col items-center justify-center text-[#3d618c] dark:text-slate-400 px-5 py-2 hover:opacity-80 active:scale-90 transition-transform duration-200">
+<span class="material-symbols-outlined" data-icon="history">history</span>
+<span class="font-['Manrope'] text-[11px] font-medium tracking-wide">History</span>
+</button>
+<button class="flex flex-col items-center justify-center bg-[#d2e4ff] dark:bg-teal-900/30 text-[#096973] dark:text-teal-300 rounded-[24px] px-5 py-2 transition-all active:scale-90">
+<span class="material-symbols-outlined" data-icon="calendar_today" style="font-variation-settings: 'FILL' 1;">calendar_today</span>
+<span class="font-['Manrope'] text-[11px] font-medium tracking-wide">Calendar</span>
+</button>
+<button class="flex flex-col items-center justify-center text-[#3d618c] dark:text-slate-400 px-5 py-2 hover:opacity-80 active:scale-90 transition-transform duration-200">
+<span class="material-symbols-outlined" data-icon="insights">insights</span>
+<span class="font-['Manrope'] text-[11px] font-medium tracking-wide">Insights</span>
+</button>
+<button class="flex flex-col items-center justify-center text-[#3d618c] dark:text-slate-400 px-5 py-2 hover:opacity-80 active:scale-90 transition-transform duration-200">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-['Manrope'] text-[11px] font-medium tracking-wide">Settings</span>
+</button>
+</nav>
+</body></html>

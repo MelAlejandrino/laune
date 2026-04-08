@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>MoodLog History | Mindful Canvas</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Manrope:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "secondary-dim": "#3d3dcb",
+                    "surface-container": "#e5eeff",
+                    "secondary-fixed-dim": "#d1d0ff",
+                    "on-tertiary-fixed": "#004a41",
+                    "surface-dim": "#c4dcff",
+                    "inverse-primary": "#a5f2fd",
+                    "tertiary-fixed": "#65fde6",
+                    "on-primary": "#eafcff",
+                    "surface-container-lowest": "#ffffff",
+                    "inverse-surface": "#000f21",
+                    "on-error": "#fff7f6",
+                    "inverse-on-surface": "#8e9eb7",
+                    "tertiary-container": "#65fde6",
+                    "on-secondary-container": "#3b3cc9",
+                    "outline": "#5a7da9",
+                    "primary": "#096973",
+                    "on-tertiary-container": "#005e54",
+                    "secondary-container": "#e1e0ff",
+                    "on-background": "#05345c",
+                    "on-secondary-fixed": "#2622b7",
+                    "on-secondary-fixed-variant": "#4647d3",
+                    "primary-container": "#a3effa",
+                    "surface": "#f8f9ff",
+                    "on-primary-fixed-variant": "#00656f",
+                    "error": "#a83836",
+                    "surface-tint": "#096973",
+                    "surface-container-high": "#dce9ff",
+                    "on-error-container": "#6e0a12",
+                    "on-primary-fixed": "#00474e",
+                    "on-tertiary-fixed-variant": "#00695e",
+                    "primary-dim": "#005c65",
+                    "on-secondary": "#fbf7ff",
+                    "on-tertiary": "#e2fff8",
+                    "primary-fixed": "#a3effa",
+                    "error-container": "#fa746f",
+                    "tertiary": "#006b60",
+                    "secondary": "#4a4bd7",
+                    "secondary-fixed": "#e1e0ff",
+                    "on-surface-variant": "#3d618c",
+                    "tertiary-dim": "#005e54",
+                    "surface-variant": "#d2e4ff",
+                    "on-surface": "#05345c",
+                    "surface-container-highest": "#d2e4ff",
+                    "background": "#f8f9ff",
+                    "primary-fixed-dim": "#95e1eb",
+                    "tertiary-fixed-dim": "#54eed8",
+                    "surface-bright": "#f8f9ff",
+                    "error-dim": "#67040d",
+                    "surface-container-low": "#eff4ff",
+                    "on-primary-container": "#005b63",
+                    "outline-variant": "#91b4e4"
+            },
+            "borderRadius": {
+                    "DEFAULT": "1rem",
+                    "lg": "2rem",
+                    "xl": "3rem",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Plus Jakarta Sans"],
+                    "body": ["Manrope"],
+                    "label": ["Manrope"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        body { font-family: 'Manrope', sans-serif; }
+        .plus-jakarta { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface min-h-screen flex flex-col">
+<!-- TopAppBar -->
+<header class="w-full top-0 sticky z-50 bg-[#f8f9ff] dark:bg-slate-950 flex justify-between items-center px-6 py-4 w-full transition-colors duration-300">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full overflow-hidden border-2 border-primary-container">
+<img class="w-full h-full object-cover" data-alt="portrait of a calm smiling woman in a serene indoor setting with soft natural light" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDs8oyJtReuRAf_EF4HVWcQawApT4Q86wxsHTZtdD1H_IeER1_BgVUbTO-pN3a9OUKIrO54c85Jn8_byyXxnaB6S4Lh-ZhIFp5fzkvZSp7cZ8WjXDaT4T9oiRDouI96gl0YAmAXmBl534hVKin4JeyMmAnGrJRP-8JgI66xj84lcemHSF2fn7Vx_NYupf4fo1cYaP81KcHKyIzmFRdcl7pZEDrtdg07pD-ymu5kGQw-mNI28RIwXHqwJ6dWnegPW4HS2gwRi4pKfvg"/>
+</div>
+<span class="font-['Plus_Jakarta_Sans'] font-bold text-[#096973] dark:text-teal-400 text-xl">Mindful Canvas</span>
+</div>
+<div class="flex items-center gap-4">
+<button class="text-[#3d618c] dark:text-slate-400 active:scale-95 transition-all">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+</button>
+</div>
+</header>
+<!-- Main Content -->
+<main class="flex-1 pb-32 px-6">
+<!-- Editorial Header -->
+<section class="mt-8 mb-10">
+<h1 class="font-['Plus_Jakarta_Sans'] font-extrabold text-4xl text-on-surface tracking-tight mb-2">History</h1>
+<p class="text-on-surface-variant body-lg opacity-80 leading-relaxed">A look back at your emotional landscape.</p>
+</section>
+<!-- Search Bar -->
+<div class="relative mb-8">
+<div class="absolute inset-y-0 left-4 flex items-center pointer-events-none text-on-surface-variant">
+<span class="material-symbols-outlined text-lg" data-icon="search">search</span>
+</div>
+<input class="w-full h-14 pl-12 pr-4 bg-surface-container-low border-none rounded-full focus:ring-2 focus:ring-primary/20 placeholder:text-on-surface-variant/50 font-medium" placeholder="Search notes or tags..." type="text"/>
+</div>
+<!-- Timeline -->
+<div class="space-y-12">
+<!-- Month Group -->
+<div>
+<h3 class="font-['Plus_Jakarta_Sans'] font-bold text-xs uppercase tracking-widest text-on-surface-variant/60 mb-6 flex items-center gap-4">
+<span>April 2024</span>
+<div class="h-px flex-1 bg-surface-container-high"></div>
+</h3>
+<div class="space-y-6">
+<!-- Today Entry -->
+<div class="relative group">
+<!-- Subtle Action Indicator (Swipe Indication) -->
+<div class="absolute inset-y-0 right-0 w-24 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-on-surface-variant/40" data-icon="swipe_left">swipe_left</span>
+</div>
+<div class="bg-surface-container-highest p-6 rounded-xl relative z-10 shadow-[0px_12px_32px_rgba(5,52,92,0.06)]">
+<div class="flex justify-between items-start mb-4">
+<div class="flex items-center gap-4">
+<div class="w-14 h-14 bg-surface rounded-full flex items-center justify-center text-3xl shadow-sm">
+                                        😊
+                                    </div>
+<div>
+<h4 class="font-bold text-lg text-on-surface">Good</h4>
+<p class="text-xs text-on-surface-variant font-medium">Today • 09:15 AM</p>
+</div>
+</div>
+<button class="text-on-surface-variant/40">
+<span class="material-symbols-outlined" data-icon="more_vert">more_vert</span>
+</button>
+</div>
+<p class="text-on-surface-variant leading-relaxed mb-4 line-clamp-2">
+                                Had an incredibly productive morning session. The sunrise was particularly beautiful today, which set a calm tone for the day.
+                            </p>
+<div class="flex flex-wrap gap-2">
+<span class="px-3 py-1 bg-primary/10 text-primary rounded-full text-xs font-semibold">#work</span>
+<span class="px-3 py-1 bg-secondary/10 text-secondary rounded-full text-xs font-semibold">#productive</span>
+</div>
+</div>
+</div>
+<!-- Yesterday Entry -->
+<div class="bg-surface-container p-6 rounded-xl shadow-sm">
+<div class="flex justify-between items-start mb-4">
+<div class="flex items-center gap-4">
+<div class="w-14 h-14 bg-surface rounded-full flex items-center justify-center text-3xl">
+                                    😔
+                                </div>
+<div>
+<h4 class="font-bold text-lg text-on-surface">Sad</h4>
+<p class="text-xs text-on-surface-variant font-medium">Yesterday • 06:45 PM</p>
+</div>
+</div>
+</div>
+<p class="text-on-surface-variant leading-relaxed mb-4">
+                            Feeling a bit drained after a long week. Just taking it slow this evening with some hot tea and reading.
+                        </p>
+<div class="flex flex-wrap gap-2">
+<span class="px-3 py-1 bg-surface-container-highest text-on-surface-variant rounded-full text-xs font-semibold">#evening</span>
+<span class="px-3 py-1 bg-surface-container-highest text-on-surface-variant rounded-full text-xs font-semibold">#rest</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Month Group -->
+<div>
+<h3 class="font-['Plus_Jakarta_Sans'] font-bold text-xs uppercase tracking-widest text-on-surface-variant/60 mb-6 flex items-center gap-4">
+<span>March 2024</span>
+<div class="h-px flex-1 bg-surface-container-high"></div>
+</h3>
+<div class="space-y-6">
+<!-- Entry 3 -->
+<div class="bg-surface-container-low border border-outline-variant/10 p-6 rounded-xl">
+<div class="flex justify-between items-start mb-4">
+<div class="flex items-center gap-4">
+<div class="w-14 h-14 bg-surface rounded-full flex items-center justify-center text-3xl">
+                                    🤩
+                                </div>
+<div>
+<h4 class="font-bold text-lg text-on-surface">Excited</h4>
+<p class="text-xs text-on-surface-variant font-medium">Mar 28 • 02:10 PM</p>
+</div>
+</div>
+</div>
+<p class="text-on-surface-variant leading-relaxed mb-4">
+                            Finally booked the tickets for the summer retreat! Can't wait to disconnect and reconnect with nature.
+                        </p>
+<div class="flex flex-wrap gap-2">
+<span class="px-3 py-1 bg-tertiary/10 text-tertiary rounded-full text-xs font-semibold">#travel</span>
+<span class="px-3 py-1 bg-tertiary/10 text-tertiary rounded-full text-xs font-semibold">#nature</span>
+</div>
+</div>
+<!-- Entry 4 -->
+<div class="bg-surface-container-low border border-outline-variant/10 p-6 rounded-xl">
+<div class="flex justify-between items-start mb-4">
+<div class="flex items-center gap-4">
+<div class="w-14 h-14 bg-surface rounded-full flex items-center justify-center text-3xl">
+                                    😌
+                                </div>
+<div>
+<h4 class="font-bold text-lg text-on-surface">Calm</h4>
+<p class="text-xs text-on-surface-variant font-medium">Mar 25 • 08:30 AM</p>
+</div>
+</div>
+</div>
+<p class="text-on-surface-variant leading-relaxed mb-4">
+                            Morning meditation session was really grounding today. Everything feels clear.
+                        </p>
+<div class="flex flex-wrap gap-2">
+<span class="px-3 py-1 bg-surface-container-highest text-on-surface-variant rounded-full text-xs font-semibold">#meditation</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Loading Indicator (Infinite Scroll Feel) -->
+<div class="flex justify-center py-8">
+<div class="flex gap-2">
+<div class="w-2 h-2 rounded-full bg-primary/20 animate-pulse"></div>
+<div class="w-2 h-2 rounded-full bg-primary/40 animate-pulse delay-75"></div>
+<div class="w-2 h-2 rounded-full bg-primary/20 animate-pulse delay-150"></div>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-8 pt-3 bg-[#f8f9ff]/80 dark:bg-slate-950/80 backdrop-blur-xl rounded-t-[32px] shadow-[0px_-12px_32px_rgba(5,52,92,0.06)]">
+<!-- Home -->
+<a class="flex flex-col items-center justify-center text-[#3d618c] dark:text-slate-400 px-5 py-2 hover:opacity-80 active:scale-90 transition-all duration-200" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="home">home</span>
+<span class="font-['Manrope'] text-[11px] font-medium tracking-wide">Home</span>
+</a>
+<!-- History (ACTIVE) -->
+<a class="flex flex-col items-center justify-center bg-[#d2e4ff] dark:bg-teal-900/30 text-[#096973] dark:text-teal-300 rounded-[24px] px-5 py-2 hover:opacity-80 active:scale-90 transition-all duration-200" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="history" style="font-variation-settings: 'FILL' 1;">history</span>
+<span class="font-['Manrope'] text-[11px] font-medium tracking-wide">History</span>
+</a>
+<!-- Calendar -->
+<a class="flex flex-col items-center justify-center text-[#3d618c] dark:text-slate-400 px-5 py-2 hover:opacity-80 active:scale-90 transition-all duration-200" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="calendar_today">calendar_today</span>
+<span class="font-['Manrope'] text-[11px] font-medium tracking-wide">Calendar</span>
+</a>
+<!-- Insights -->
+<a class="flex flex-col items-center justify-center text-[#3d618c] dark:text-slate-400 px-5 py-2 hover:opacity-80 active:scale-90 transition-all duration-200" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="insights">insights</span>
+<span class="font-['Manrope'] text-[11px] font-medium tracking-wide">Insights</span>
+</a>
+<!-- Settings -->
+<a class="flex flex-col items-center justify-center text-[#3d618c] dark:text-slate-400 px-5 py-2 hover:opacity-80 active:scale-90 transition-all duration-200" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="settings">settings</span>
+<span class="font-['Manrope'] text-[11px] font-medium tracking-wide">Settings</span>
+</a>
+</nav>
+<!-- FAB for Log Mood (only on relevant screens, but consistent with wellness app logic) -->
+<button class="fixed right-6 bottom-32 w-16 h-16 bg-primary text-on-primary rounded-full shadow-lg flex items-center justify-center active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-3xl" data-icon="add">add</span>
+</button>
+</body></html>
