@@ -2,49 +2,65 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class AppTheme {
-  // Colors extracted from designs (Light Mode)
-  static const Color primary = Color(0xFF096973);
-  static const Color onPrimary = Color(0xFFEAFCFF);
-  static const Color primaryContainer = Color(0xFFA3EFFA);
-  static const Color onPrimaryContainer = Color(0xFF005B63);
-  static const Color secondary = Color(0xFF4A4BD7);
-  static const Color onSecondary = Color(0xFFFBF7FF);
-  static const Color secondaryContainer = Color(0xFFE1E0FF);
-  static const Color onSecondaryContainer = Color(0xFF3B3CC9);
-  static const Color tertiary = Color(0xFF006B60);
-  static const Color onTertiary = Color(0xFFE2FFF8);
-  static const Color surface = Color(0xFFF8F9FF);
-  static const Color onSurface = Color(0xFF05345C);
-  static const Color surfaceVariant = Color(0xFFD2E4FF);
-  static const Color onSurfaceVariant = Color(0xFF3D618C);
-  static const Color background = Color(0xFFF8F9FF);
-  static const Color onBackground = Color(0xFF05345C);
-  static const Color outline = Color(0xFF5A7DA9);
-  static const Color outlineVariant = Color(0xFF91B4E4);
-  static const Color error = Color(0xFFA83836);
-  static const Color onError = Color(0xFFFFF7F6);
-  
-  static const Color surfaceContainerLowest = Color(0xFFFFFFFF);
-  static const Color surfaceContainerLow = Color(0xFFEFF4FF);
-  static const Color surfaceContainer = Color(0xFFE5EEFF);
-  static const Color surfaceContainerHigh = Color(0xFFDCE9FF);
-  static const Color surfaceContainerHighest = Color(0xFFD2E4FF);
-  static const Color primaryFixedDim = Color(0xFF95E1EB);
-  static const Color tertiaryContainer = Color(0xFF65FDE6);
+  // ── Light Mode Colors ─────────────────────────────────────────────
+  // Primary: Dusty Rose
+  static const Color primary            = Color(0xFFB07080);
+  static const Color onPrimary          = Color(0xFFFFF5F0);
+  static const Color primaryContainer   = Color(0xFFF2D4D4);
+  static const Color onPrimaryContainer = Color(0xFF7A4050);
 
-  // Dark Mode Colors
-  static const Color primaryDark = Color(0xFF80D4E0);
-  static const Color onPrimaryDark = Color(0xFF00363D);
-  static const Color primaryContainerDark = Color(0xFF004F58);
-  static const Color onPrimaryContainerDark = Color(0xFFA3EFFA);
-  static const Color secondaryDark = Color(0xFFBFC0FF);
-  static const Color onSecondaryDark = Color(0xFF1E1D94);
-  static const Color surfaceDark = Color(0xFF0B141E);
-  static const Color onSurfaceDark = Color(0xFFE1E2E8);
-  static const Color surfaceVariantDark = Color(0xFF42474E);
-  static const Color onSurfaceVariantDark = Color(0xFFC2C7CF);
-  static const Color backgroundDark = Color(0xFF0B141E);
-  static const Color onBackgroundDark = Color(0xFFE1E2E8);
+  // Secondary: Muted Lavender
+  static const Color secondary              = Color(0xFF8E7FA8);
+  static const Color onSecondary            = Color(0xFFF8F4FF);
+  static const Color secondaryContainer     = Color(0xFFDDD8EE);
+  static const Color onSecondaryContainer   = Color(0xFF5A4A72);
+
+  // Tertiary: Sage Green
+  static const Color tertiary           = Color(0xFF7A9E8E);
+  static const Color onTertiary         = Color(0xFFEFF6F2);
+  static const Color tertiaryContainer  = Color(0xFFB8D4C8);
+
+  // Surfaces — warm parchment / linen / cream hierarchy (NO blue tints)
+  static const Color surface                    = Color(0xFFFDF8F2);
+  static const Color onSurface                  = Color(0xFF3D2B1F);
+  static const Color surfaceVariant             = Color(0xFFDECCB8);
+  static const Color onSurfaceVariant           = Color(0xFF7A6055);
+  static const Color background                 = Color(0xFFFDF8F2);
+  static const Color onBackground               = Color(0xFF3D2B1F);
+
+  static const Color surfaceContainerLowest  = Color(0xFFFBF5EE);
+  static const Color surfaceContainerLow     = Color(0xFFF7EFE5);
+  static const Color surfaceContainer        = Color(0xFFF0E5D8);
+  static const Color surfaceContainerHigh    = Color(0xFFE8D8C8);
+  static const Color surfaceContainerHighest = Color(0xFFDECCB8);
+
+  // Outlines & misc
+  static const Color outline          = Color(0xFFB89880);
+  static const Color outlineVariant   = Color(0xFFD4B89A);
+  static const Color primaryFixedDim  = Color(0xFFC49090);
+
+  // Error
+  static const Color error   = Color(0xFFB05050);
+  static const Color onError = Color(0xFFFFF2F0);
+
+  // ── Dark Mode Colors ──────────────────────────────────────────────
+  // Dark Primary: lighter dusty rose
+  static const Color primaryDark            = Color(0xFFE8A8B0);
+  static const Color onPrimaryDark          = Color(0xFF4A1525);
+  static const Color primaryContainerDark   = Color(0xFF72404A);
+  static const Color onPrimaryContainerDark = Color(0xFFF2D4D4);
+
+  // Dark Secondary: lighter muted lavender
+  static const Color secondaryDark          = Color(0xFFC4B8D8);
+  static const Color onSecondaryDark        = Color(0xFF352545);
+
+  // Dark Surfaces — warm dark-roast brown, not dark navy
+  static const Color surfaceDark            = Color(0xFF1E1610);
+  static const Color onSurfaceDark          = Color(0xFFEDE0D4);
+  static const Color surfaceVariantDark     = Color(0xFF3D312A);
+  static const Color onSurfaceVariantDark   = Color(0xFFC4A898);
+  static const Color backgroundDark         = Color(0xFF1E1610);
+  static const Color onBackgroundDark       = Color(0xFFEDE0D4);
 
   // Spacing & Radius
   static const double radiusDefault = 16.0;
@@ -85,6 +101,7 @@ class AppTheme {
           onSecondaryContainer: onSecondaryContainer,
           tertiary: tertiary,
           onTertiary: onTertiary,
+          tertiaryContainer: tertiaryContainer,
           surface: surface,
           onSurface: onSurface,
           surfaceVariant: surfaceVariant,
@@ -92,6 +109,7 @@ class AppTheme {
           background: background,
           onBackground: onBackground,
           outline: outline,
+          outlineVariant: outlineVariant,
           error: error,
           onError: onError,
         );

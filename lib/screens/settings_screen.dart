@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:go_router/go_router.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:stitch/main.dart';
@@ -86,27 +87,86 @@ class _SettingsScreenState extends State<SettingsScreen> {
     }
   }
 
+  void _showToast(String message, {bool isError = true}) {
+    if (!mounted) return;
+    final scheme = Theme.of(context).colorScheme;
+    ScaffoldMessenger.of(context)
+      ..clearSnackBars()
+      ..showSnackBar(
+        SnackBar(
+          content: Row(
+            children: [
+              Icon(
+                isError ? Icons.error_outline_rounded : Icons.check_circle_outline_rounded,
+                color: isError ? scheme.onError : scheme.onPrimary,
+                size: 20,
+              ),
+              const SizedBox(width: 10),
+              Expanded(
+                child: Text(
+                  message,
+                  style: TextStyle(
+                    color: isError ? scheme.onError : scheme.onPrimary,
+                    fontWeight: FontWeight.w500,
+                    fontSize: 13.5,
+                  ),
+                ),
+              ),
+            ],
+          ),
+          backgroundColor: isError ? scheme.error : scheme.primary,
+          behavior: SnackBarBehavior.floating,
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+          margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+          duration: const Duration(seconds: 3),
+          elevation: 0,
+        ),
+      );
+  }
+
   Future<void> _toggleBiometrics(bool value) async {
     final authRepo = MoodScope.of(context).authRepository;
-    
+
     if (value) {
+      // Check hardware support first
       final canUse = await authRepo.canUseBiometrics();
       if (!canUse) {
-        if (mounted) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(content: Text('Biometric authentication is not supported on this device.')),
-          );
-        }
+        _showToast('This device does not support biometric authentication.');
         return;
       }
-      
-      // Mandatory verification before enabling
-      final verified = await authRepo.verifyBiometrics();
-      if (!verified) return;
+
+      // Ask user to verify biometrics before enabling
+      bool verified = false;
+      try {
+        verified = await authRepo.verifyBiometrics();
+      } on PlatformException catch (e) {
+        // NotAvailable = no biometrics enrolled; NotEnrolled = same on some devices
+        final code = e.code;
+        if (code == 'NotAvailable' || code == 'NotEnrolled' || code == 'no_fragment_activity') {
+          _showToast('No biometrics are set up on this device. Please enroll a fingerprint or face in your device settings.');
+        } else {
+          _showToast('Biometric error: ${e.message ?? e.code}');
+        }
+        return;
+      } catch (e) {
+        _showToast('An unexpected error occurred. Please try again.');
+        return;
+      }
+
+      if (!verified) {
+        _showToast('Biometric verification failed or was cancelled.');
+        return;
+      }
     }
-    
+
     await authRepo.setBiometricEnabled(value);
     setState(() => _biometricEnabled = value);
+
+    if (!value) {
+      _showToast('Biometric lock disabled.', isError: false);
+    } else {
+      _showToast('Biometric lock enabled!', isError: false);
+    }
   }
 
   @override

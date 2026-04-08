@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:local_auth/local_auth.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -69,6 +70,9 @@ class AuthRepository extends ChangeNotifier {
           biometricOnly: true,
         ),
       );
+    } on PlatformException catch (e) {
+      debugPrint('Biometric verification error: $e');
+      rethrow; // Let caller handle specific error codes
     } catch (e) {
       debugPrint('Biometric verification error: $e');
       return false;

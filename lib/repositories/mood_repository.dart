@@ -13,30 +13,42 @@ class MoodRepository extends ChangeNotifier {
 
   int get streak {
     if (_entries.isEmpty) return 0;
-    
+
+    // Get unique calendar days, sorted newest first
     final sortedDates = _entries
         .map((e) => DateTime(e.timestamp.year, e.timestamp.month, e.timestamp.day))
         .toSet()
         .toList()
       ..sort((a, b) => b.compareTo(a));
 
-    int currentStreak = 0;
-    DateTime today = DateTime.now();
-    DateTime checkDate = DateTime(today.year, today.month, today.day);
+    final today = DateTime(
+      DateTime.now().year,
+      DateTime.now().month,
+      DateTime.now().day,
+    );
 
-    // If the latest entry isn't today or yesterday, streak is 0
-    if (sortedDates.first.isBefore(checkDate.subtract(const Duration(days: 1)))) {
+    // Streak is dead if the most recent entry isn't today or yesterday
+    if (sortedDates.first.isBefore(today.subtract(const Duration(days: 1)))) {
       return 0;
     }
 
-    for (var date in sortedDates) {
-      if (date == checkDate || date == checkDate.subtract(const Duration(days: 1))) {
+    // Walk backwards from today, requiring each consecutive day to match exactly
+    int currentStreak = 0;
+    DateTime checkDate = sortedDates.first == today
+        ? today
+        : today.subtract(const Duration(days: 1));
+
+    for (final date in sortedDates) {
+      if (date == checkDate) {
         currentStreak++;
-        checkDate = date.subtract(const Duration(days: 1));
-      } else {
+        checkDate = checkDate.subtract(const Duration(days: 1));
+      } else if (date.isBefore(checkDate)) {
+        // Gap detected — stop counting
         break;
       }
+      // If date > checkDate (duplicate day already counted), skip silently
     }
+
     return currentStreak;
   }
 

@@ -40,81 +40,81 @@ class _AppBottomNav extends StatelessWidget {
     required this.onTap,
   });
 
+  static const _items = [
+    (icon: Icons.home_outlined, activeIcon: Icons.home_rounded),
+    (icon: Icons.history_outlined, activeIcon: Icons.history_rounded),
+    (icon: Icons.calendar_today_outlined, activeIcon: Icons.calendar_today_rounded),
+    (icon: Icons.settings_outlined, activeIcon: Icons.settings_rounded),
+  ];
+
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: const EdgeInsets.only(bottom: 24, left: 16, right: 16),
-      decoration: BoxDecoration(
-        boxShadow: [
-          BoxShadow(
-            color: const Color(0xFF05345C).withOpacity(0.06),
-            blurRadius: 32,
-            offset: const Offset(0, -12),
-          ),
-        ],
-      ),
+    final scheme = Theme.of(context).colorScheme;
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+
+    final pillBg = isDark
+        ? scheme.surface.withOpacity(0.88)
+        : scheme.surface.withOpacity(0.94);
+
+    final activeCircleColor = scheme.primary;
+
+    final activeIconColor = scheme.onPrimary;
+
+    final inactiveIconColor = isDark
+        ? scheme.onSurfaceVariant
+        : AppTheme.onSurfaceVariant;
+
+    return Padding(
+      padding: const EdgeInsets.only(left: 24, right: 24, bottom: 28),
       child: ClipRRect(
-        borderRadius: BorderRadius.circular(32),
+        borderRadius: BorderRadius.circular(40),
         child: BackdropFilter(
-          filter: ImageFilter.blur(sigmaX: 20, sigmaY: 20),
-          child: NavigationBarTheme(
-            data: NavigationBarThemeData(
-              indicatorColor: Theme.of(context).colorScheme.surfaceVariant,
-              labelTextStyle: WidgetStateProperty.resolveWith((states) {
-                if (states.contains(WidgetState.selected)) {
-                  return TextStyle(
-                    fontSize: 11,
-                    fontWeight: FontWeight.w600,
-                    color: Theme.of(context).colorScheme.primary,
-                  );
-                }
-                return const TextStyle(
-                  fontSize: 11,
-                  fontWeight: FontWeight.w500,
-                  color: AppTheme.onSurfaceVariant,
-                );
-              }),
-              iconTheme: WidgetStateProperty.resolveWith((states) {
-                if (states.contains(WidgetState.selected)) {
-                  return IconThemeData(
-                    color: Theme.of(context).colorScheme.primary,
-                    size: 24,
-                  );
-                }
-                return const IconThemeData(
-                  color: AppTheme.onSurfaceVariant,
-                  size: 24,
-                );
-              }),
-            ),
-            child: NavigationBar(
-              selectedIndex: currentIndex,
-              onDestinationSelected: onTap,
-              backgroundColor: Theme.of(context).colorScheme.surface.withOpacity(0.8),
-              elevation: 0,
-              height: 72,
-              destinations: const [
-                NavigationDestination(
-                  icon: Icon(Icons.home_outlined),
-                  selectedIcon: Icon(Icons.home, fill: 1),
-                  label: 'Home',
-                ),
-                NavigationDestination(
-                  icon: Icon(Icons.history_outlined),
-                  selectedIcon: Icon(Icons.history, fill: 1),
-                  label: 'History',
-                ),
-                NavigationDestination(
-                  icon: Icon(Icons.calendar_today_outlined),
-                  selectedIcon: Icon(Icons.calendar_today, fill: 1),
-                  label: 'Calendar',
-                ),
-                NavigationDestination(
-                  icon: Icon(Icons.settings_outlined),
-                  selectedIcon: Icon(Icons.settings, fill: 1),
-                  label: 'Settings',
+          filter: ImageFilter.blur(sigmaX: 24, sigmaY: 24),
+          child: Container(
+            height: 68,
+            decoration: BoxDecoration(
+              color: pillBg,
+              borderRadius: BorderRadius.circular(40),
+              border: Border.all(
+                color: isDark
+                    ? Colors.white.withOpacity(0.08)
+                    : Colors.black.withOpacity(0.06),
+                width: 1,
+              ),
+              boxShadow: [
+                BoxShadow(
+                  color: const Color(0xFF3D2B1F).withOpacity(isDark ? 0.40 : 0.10),
+                  blurRadius: 28,
+                  offset: const Offset(0, 8),
                 ),
               ],
+            ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: List.generate(_items.length, (index) {
+                final item = _items[index];
+                final isSelected = index == currentIndex;
+
+                return GestureDetector(
+                  onTap: () => onTap(index),
+                  behavior: HitTestBehavior.opaque,
+                  child: AnimatedContainer(
+                    duration: const Duration(milliseconds: 220),
+                    curve: Curves.easeInOut,
+                    width: 52,
+                    height: 52,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: isSelected ? activeCircleColor : Colors.transparent,
+                    ),
+                    child: Icon(
+                      isSelected ? item.activeIcon : item.icon,
+                      size: 22,
+                      color: isSelected ? activeIconColor : inactiveIconColor,
+                    ),
+                  ),
+                );
+              }),
             ),
           ),
         ),
